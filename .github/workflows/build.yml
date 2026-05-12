@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6.0.2
 
       - name: Debug Cosign secrets
         run: |
@@ -45,24 +45,25 @@ jobs:
         uses: blue-build/github-action@v1
         with:
           recipe: recipe.yml
-          COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }} 
+          COSIGN_PRIVATE_KEY: ${{ secrets.SIGNING_SECRET }}
           registry_token: ${{ github.token }}
           pr_event_number: ${{ github.event.number }}
-  
-  
+
   build-iso:
     runs-on: ubuntu-latest
-    needs: build # Only runs if the main build succeeds
-    if: github.event_name != 'pull_request' # Usually recommended to only build ISOs on main branch pushes
+    needs: build
+    if: github.event_name != 'pull_request'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ github.token }}
+
       - name: Generate ISO
         uses: jasonn3/build-container-installer@v1.4.0
         with:
@@ -73,19 +74,14 @@ jobs:
           variant: COSMIC
           version: 43
           web_ui: false
-          
-          # --- Signing & Secure Boot ---
           image_signed: true
-          # Replace with your actual public key URL (usually in your repo root)
-          secure_boot_key_url: https://github.com/Masterionio/bsk-os/blob/main/cosign.pub
-          # This password is used to enroll the key into your BIOS/MOK on first boot
+          secure_boot_key_url: https://github.com/Masterionio/astral-os/raw/main/cosign.pub
           enrollment_password: AstralOS777!
-          
-          # --- Caching ---
           enable_cache_dnf: true
           enable_cache_skopeo: true
+
       - name: Upload ISO as artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: astral-os_alpha
           path: ./*.iso
