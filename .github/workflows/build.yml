@@ -85,3 +85,40 @@ jobs:
         with:
           name: astral-os_alpha
           path: ./*.iso
+
+  fallback-build-iso:
+    runs-on: ubuntu-latest
+    needs: build-iso
+    if: failure() && github.event_name != 'pull_request'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6.0.2
+
+      - name: Login with PAT
+        uses: docker/login-action@v4.1.0
+        with:
+          registry: ghcr.io
+          username: masterionio
+          password: ${{ secrets.PAT }}
+
+      - name: Generate ISO
+        uses: jasonn3/build-container-installer@v1.4.0
+        with:
+          image_name: astral-os_alpha
+          image_repo: ghcr.io/masterionio
+          image_tag: astral-alpha-v1.00
+          iso_name: astral-os_alpha.iso
+          variant: COSMIC
+          version: 43
+          web_ui: false
+          image_signed: true
+          secure_boot_key_url: https://github.com/Masterionio/astral-os/raw/main/cosign.pub
+          enrollment_password: AstralOS777!
+          enable_cache_dnf: true
+          enable_cache_skopeo: true
+
+      - name: Upload ISO as artifact
+        uses: actions/upload-artifact@v7.0.1
+        with:
+          name: astral-os_alpha
+          path: ./*.iso
