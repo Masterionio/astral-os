@@ -72,7 +72,7 @@ jobs:
           image_tag: astral-alpha-v1.00
           iso_name: astral-os_alpha.iso
           variant: COSMIC
-          version: 43
+          version: 44
           web_ui: false
           image_signed: true
           secure_boot_key_url: https://github.com/Masterionio/astral-os/raw/main/cosign.pub
@@ -109,7 +109,7 @@ jobs:
           image_tag: astral-alpha-v1.00
           iso_name: astral-os_alpha.iso
           variant: COSMIC
-          version: 43
+          version: 44
           web_ui: false
           image_signed: true
           secure_boot_key_url: https://github.com/Masterionio/astral-os/raw/main/cosign.pub
