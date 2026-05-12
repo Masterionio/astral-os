@@ -1,6 +1,6 @@
 ---
 # yaml-language-server: $schema=https://schema.blue-build.org/recipe-v1.json
-name: bsk-os
+name: astral-os
 description: Secure OS designed for server and enterprise use.
 base-image: ghcr.io/secureblue/cosmic-main-hardened
 image-version: 43
