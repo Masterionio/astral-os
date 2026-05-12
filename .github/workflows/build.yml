@@ -68,8 +68,8 @@ jobs:
         with:
           image_name: bsk-os
           image_repo: ghcr.io/masterionio
-          image_tag: 43
-          iso_name: bsk-os-alpha.iso
+          image_tag: astral-alpha-v1.00
+          iso_name: astral_os-alpha.iso
           variant: COSMIC
           version: 43 # Required for F43 compatibility currently
           web_ui: false
@@ -79,7 +79,7 @@ jobs:
           # Replace with your actual public key URL (usually in your repo root)
           secure_boot_key_url: https://github.com/Masterionio/bsk-os/blob/main/cosign.pub
           # This password is used to enroll the key into your BIOS/MOK on first boot
-          enrollment_password: BSKos12894
+          enrollment_password: AstralOS777!
           
           # --- Caching ---
           enable_cache_dnf: true
