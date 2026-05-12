@@ -57,7 +57,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v6.0.2
 
-      - name: Login to GitHub Container Registry
+      - name: Login to GHCR
         uses: docker/login-action@v4.1.0
         with:
           registry: ghcr.io
@@ -94,7 +94,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6.0.2
 
-      - name: Login with PAT
+      - name: Login to GHCR with PAT
         uses: docker/login-action@v4.1.0
         with:
           registry: ghcr.io
