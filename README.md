@@ -1,4 +1,4 @@
-# bsk-os &nbsp; [![bluebuild build badge](https://github.com/masterionio/bsk-os/actions/workflows/build.yml/badge.svg)](https://github.com/masterionio/bsk-os/actions/workflows/build.yml)
+# astral-os &nbsp; [![bluebuild build badge](https://github.com/masterionio/astral-os/actions/workflows/build.yml/badge.svg)](https://github.com/masterionio/bsk-os/actions/workflows/build.yml)
 
 See the [BlueBuild docs](https://blue-build.org/how-to/setup/) for quick setup instructions for setting up your own repository based on this template.
 
