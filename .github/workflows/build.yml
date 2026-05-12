@@ -68,7 +68,7 @@ jobs:
         uses: jasonn3/build-container-installer@v1.4.0
         with:
           image_name: astral-os_alpha
-          image_repo: ghcr.io/masterionio
+          image_repo: ghcr.io/Masterionio
           image_tag: astral-alpha-v1.00
           iso_name: astral-os_alpha.iso
           variant: COSMIC
