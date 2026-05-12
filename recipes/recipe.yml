@@ -3,7 +3,7 @@
 name: astral-os
 description: Secure OS designed for server and enterprise use.
 base-image: ghcr.io/secureblue/cosmic-main-hardened
-image-version: 43
+image-version: 44
 modules:
   - type: files
     files:
